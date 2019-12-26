@@ -28,3 +28,11 @@ class BookPage(BasePage):
 
     def go_to_cart(self):
         self.browser.find_element(*ProductPageLocators.CART).click()
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE),\
+               'Success message is preswnted, but shoud not be'
+
+    def element_should_be_gone(self):
+        assert self.is_disapeared(*ProductPageLocators.SUCCESS_MESSAGE),\
+               'Message still hear'
