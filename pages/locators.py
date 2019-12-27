@@ -20,6 +20,13 @@ class ProductPageLocators():
     SUCCESS_MESSAGE = (By.CSS_SELECTOR, '.alert.alert-safe.alert-noicoin.alert-success')
 
 
+class BasketPageLocators():
+    BASKET_ITEM = (By.ID, 'basket_formset')
+    BASKET = (By.ID, 'content_inner')
+
+
+
 class BasePageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR,'#login_link')
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR,'#login_link_inc')
+    CART = (By.CSS_SELECTOR, '#default > header > div.page_inner > div > div.basket-mini.pull-right.hidden-xs > span > a')

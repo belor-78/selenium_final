@@ -1,6 +1,7 @@
 import pytest
 from .pages.main_page import MainPage
 from .pages.product_page import BookPage
+from .pages.basket_page import BasketPage
 from time import sleep
 
 url = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207'
@@ -48,14 +49,24 @@ def test_message_disappeared_after_adding_product_to_basket(browser):
     page.solve_quiz_and_get_code()
     page.element_should_be_gone()
 
+@pytest.mark.skip
 def test_guest_should_see_login_link_on_product_page(browser):
     link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
     page = MainPage(browser, link)
     page.open()
     page.should_by_login_link()
 
+@pytest.mark.skip
 def test_guest_can_go_to_login_page_from_product_page(browser):
     link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
     page = BookPage(browser, link)
     page.open()
     page.go_to_login_page()
+
+def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
+    page = BasketPage(browser,url)
+    page.open()
+    page.go_to_cart()
+    page.empty_basket()
+    page.empty_basket_text()
+
